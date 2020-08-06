@@ -1,0 +1,50 @@
+ <DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>LOGIN</title>
+</head>
+<body style="background-color:#0CC0DC">
+    
+     <div class="container col-sm-9 col-md-4" >
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="text-align:center;font-size:2em">AUTHENTIFICATION</div>
+       	<div class="panel-body" style=" margin: 20px;">
+            <form th:object="${request}" th:action="@{/login}" method="post">
+                <div class="from-group">                   
+	               <div>
+		            <label for="username">Nom d'utilisateur</label>
+		            <input th:field="${request.username}" class="form-control"  type="text" id="username" placeholder="username or email">
+	       		 	</div>
+                </div>
+
+                <div class="from-group">
+                	<div>
+            			<label for="password">Mot de passe</label>
+            				<input th:field="${request.password}"  class="form-control"  type="password" id="password" placeholder="user password">
+        			</div>
+                </div>
+                         
+                <br/>
+                <div class="from-group">
+                    <input class="btn btn-primary" type="submit" name="valider" value="Valider" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ </body>
+</html> 
+
+
+
+    
+
+

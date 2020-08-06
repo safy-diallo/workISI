@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <title>AJOUT DES OFFRES</title>
+    
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/offres/ajoutOffre}">Postez une offre</a>      
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/offres/listeOffre}">Voir offres</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/demandes/list}">Liste des demandes</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}" th:inline="text" style="color: red;">[[${#httpServletRequest.remoteUser}]] Deconnexion</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+    <div class="container col-sm-9 col-md-4" >
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="text-align:center;font-size:2em">AJOUTEZ UNE OFFRE</div>
+       	<div class="panel-body" style=" margin: 20px;">
+            <form method="POST" th:action="@{/offres}" th:object="${offre}" th:method="post">
+                <div class="from-group">
+                    <label class="from-label">Identifiant</label>
+                    <input class="form-control" type="text" name="id"  th:field="${offre.id}" readonly/>
+                </div>
+
+                <div class="from-group">
+                    <label class="from-label">Nom de l'entreprise</label>
+                    <input class="form-control" type="text" name="nomEntreprise" th:field="${offre.nomEntreprise}"/>
+                </div>
+                <div class="from-group">
+                    <label class="from-label">Description</label>
+                    <textarea class="form-control" type="text" name="descriptionOffre"  th:field="${offre.descriptionOffre}"></textarea>
+                    
+                </div>          
+                <br/>
+                <div class="from-group">
+                    <input class="btn btn-success" type="submit" name="valider" value="Valider" />
+                    <input class="btn btn-danger" type="reset" name="annuler" value="Annuler" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+</body>
+</html>

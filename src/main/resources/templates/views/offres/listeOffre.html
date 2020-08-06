@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <title>AJOUT DES OFFRES</title>
+    
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/offres/ajoutOffre}">Postez une offre</a>      
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/offres/listeOffre}">Voir offres</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/demandes/list}">Liste des demandes</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}" th:inline="text" style="color: red;">[[${#httpServletRequest.remoteUser}]] Deconnexion</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<br/>
+	<div class="container col-sm-6 col-md-8" >
+    <div class="panel panel-primary">
+    
+        <div class="panel-heading" style="text-align:center;font-size:2em">LISTE DES OFFRES</div>
+        <div class="panel-body">
+            <table class="table table-striped table-bordered">
+                <tr >
+                    <th style="text-align:center">Identifiant</th>
+                    <th style="text-align:center">Nom de l'entreprise</th> 
+                    <th style="text-align:center">Description de l'offre</th>          
+                    <th style="text-align:center">Action</th>                   
+                </tr>
+                <tr th:each="off:${liste_offres}">
+                    <td th:text="${off.id}"></td>
+                    <td th:text="${off.nomEntreprise}"></td>
+                    <td th:text="${off.descriptionOffre}"></td>                  
+                    <td><a th:href="@{/demandes/add}">Postulez</a></td>
+                    
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
